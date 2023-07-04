@@ -107,6 +107,10 @@ Notes:
 * 5V\_2 pins are always on. All remaining +5V pins turn off in standby mode.
 * STANDBY# is at ~13V when the laptop is off, 5V during normal operation, and 0V during standby.
 
+![Docking connector pin diagram](https://github.com/schlae/Thinkpad700CDock/blob/main/pinout.svg)
+
+**Pin diagram (looking into the back of the laptop)**
+
 The docking connector is in the AMP Champ .050 family, similar to the 5787886-1 but with 240 contacts instead of 200. I've had success connecting to the docking port using two stacked PCBs with 0.050" edge fingers. The PCBs need to be 1.2mm thick instead of the normal 1.6mm.
 
 The docking port breaks out several ports on the laptop, for convenience:
