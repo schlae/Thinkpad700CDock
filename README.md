@@ -28,7 +28,12 @@ Test points J9 and J10 are for providing an external source of +12V for cards th
 
 ## Known Issues
 
-For some reason the docking connector does not bring out the CHRESET signal. This signal can be toggled by an IO port, and the BIOS uses it to reset the Micro Channel bus to a known state after a reboot. This project uses an off-the-shelf reset IC to provide a short pulse when 5V comes up, which isn't perfect, but should work in most cases.
+This card has a few design errors that need to get fixed, which I'll implement at some point.
+
+* CHRESET should be tied to pin 102 of the docking connector. 
+* MADE24 has not been found on the docking connector yet.
+
+To fix the CHRESET issue, remove U3 and R3. Cut the MADE24 trace at the Micro Channel slot connector (pin A2) and run a wire from pin 102 of the expansion edge connector to U3 pin 2. 
 
 Signal integrity isn't all that good, but these older 5V logic systems were not known for good signal integrity. The original IBM docking cartridge uses some buffer chips presumably for improving this on some signals, but I don't have access to one nor do I have access to high-resolution photos, so the mystery remains.
 
@@ -82,7 +87,7 @@ Through a rather tedious manual process, I've been able to reverse engineer the 
 | 39: n/c                 | 99: DB4                 | 159: IRQ14#           | 219: IRQ12# |
 | 40: DB6                 | 100: DB5                | 160: n/c (pulled up)  | 220: IRQ15# |
 | 41: GND                 | 101: DB7                | 161: n/c (pulled up)  | 221: n/c (pulled up) |
-| 42: CD\_DS16RTN#        | 102: MADE24             | 162: n/c              | 222: GND |
+| 42: CD\_DS16RTN#        | 102: CHRESET            | 162: n/c              | 222: GND |
 | 43: n/c                 | 103: REFRESH#           | 163: Parallel port pin 9 | 223: Parallel port pin 13 |
 | 44: +5V                 | 104: DB8                | 164: Parallel port pin 8 | 224: Parallel port pin 12 |
 | 45: +5V                 | 105: DB9                | 165: Parallel port pin 7 | 225: Parallel port pin 11 |
@@ -134,7 +139,7 @@ The pinout for the hard disk drive is as follows:
 
 | Pin | Function | Pin | Function |
 |-----|----------|-----|----------|
-| 1 | CHRESET#   | 2 | MADE24 |
+| 1 | CHRESET#?  | 2 | CHRESET |
 | 3 | SBHE#      | 4 | +5V |
 | 5 | (key)      | 6 | S0 (WR#) |
 | 7 | GND        | 8 | S1 (RD#) |
