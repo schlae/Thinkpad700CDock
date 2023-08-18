@@ -31,9 +31,9 @@ Test points J9 and J10 are for providing an external source of +12V for cards th
 This card has a few design errors that need to get fixed, which I'll implement at some point.
 
 * CHRESET should be tied to pin 102 of the docking connector. 
-* MADE24 has not been found on the docking connector yet.
+* MADE24 has not been found on the docking connector yet. Most likely this is because the machine never has more than 16M of RAM and it does not support 32-bit cards.
 
-To fix the CHRESET issue, remove U3 and R3. Cut the MADE24 trace at the Micro Channel slot connector (pin A2) and run a wire from pin 102 of the expansion edge connector to U3 pin 2. 
+To fix the CHRESET issue, remove U3 and R3. Cut the MADE24 trace at the Micro Channel slot connector (pin A2) and run a wire from pin 102 of the expansion edge connector to U3 pin 2. Connect a 10K resistor from the MADE24 pin of the MCA bus connector (pin A2) to a nearby +5C net (like pin A7).
 
 Signal integrity isn't all that good, but these older 5V logic systems were not known for good signal integrity. The original IBM docking cartridge uses some buffer chips presumably for improving this on some signals, but I don't have access to one nor do I have access to high-resolution photos, so the mystery remains.
 
