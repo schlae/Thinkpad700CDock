@@ -176,7 +176,7 @@ The hard drive connector goes through a flex connection to a 52-pin 2mm header o
 
 The hard drive is of the DBA (direct bus attach) ESDI type, and shows up as slot 1. (Slot 2 is on the docking connector.)
 
-The ADDRESS\_SEL# output goes low when the address range assigned to the hard drive shows up on the address bus: 0x351x).
+The ADDRESS\_SEL# output goes low when the address range assigned to the hard drive shows up on the address bus: 0x351x). It does not go low during card setup mode (CD\_SETUP# pulled low), which seems to only use the 4 address bits to decode the POS registers.
 
 
 
