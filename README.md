@@ -28,7 +28,7 @@ Test points J9 and J10 are for providing an external source of +12V for cards th
 
 ## Known Issues
 
-This card has a few design errors that need to get fixed, which I'll implement at some point.
+Revision 1 of the design had a few design errors that were fixed in rev 2. In case you have an old revision board, you will need to make the following changes:
 
 * CHRESET should be tied to pin 102 of the docking connector. 
 * MADE24 has not been found on the docking connector yet. Most likely this is because the machine never has more than 16M of RAM and it does not support 32-bit cards.
